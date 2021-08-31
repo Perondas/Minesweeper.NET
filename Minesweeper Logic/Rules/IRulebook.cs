@@ -1,4 +1,5 @@
-﻿using Minesweeper.Logic.Actions;
+﻿using System;
+using Minesweeper.Logic.Actions;
 using Minesweeper.Logic.Data;
 using Minesweeper.Logic.Game;
 
@@ -6,7 +7,7 @@ namespace Minesweeper.Logic.Rules
 {
     public interface IRulebook
     {
-        Game.Game CreateGame(int x, int y);
+        Game.Game CreateGame(uint x, uint y, uint mineCount);
 
         GameState GameStatus(Game.Game game);
 

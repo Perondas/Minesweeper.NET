@@ -6,12 +6,19 @@ namespace Minesweeper.Logic.Rules
 {
     public class StandartRulebook :IRulebook
     {
+        private GameCreationRule gameCreationRule;
+        private GameStateRule gameStateRule;
+        private OpenCellRule openCellRule;
+
+
         public StandartRulebook()
         {
-            
+            this.gameCreationRule = new GameCreationRule();
+            this.gameStateRule = new GameStateRule();
+            this.openCellRule = new OpenCellRule();
         }
 
-        public Game.Game CreateGame(int x, int y)
+        public Game.Game CreateGame(uint x, uint y, uint mineCount)
         {
             throw new System.NotImplementedException();
         }

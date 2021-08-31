@@ -2,5 +2,6 @@
 {
     public interface ICanBeOpened
     {
+        void Open();
     }
 }
