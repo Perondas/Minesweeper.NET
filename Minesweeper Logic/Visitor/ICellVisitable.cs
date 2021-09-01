@@ -1,7 +1,7 @@
 ﻿namespace Minesweeper.Logic.Visitor
 {
-    public interface ICellVisitable<T>
+    public interface ICellVisitable
     {
-        T Accept(ICellVisitor<T> visitor);
+        T Accept<T>(ICellVisitor<T> visitor);
     }
 }

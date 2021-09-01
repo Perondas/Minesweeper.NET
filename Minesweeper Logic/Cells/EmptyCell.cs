@@ -4,12 +4,7 @@ namespace Minesweeper.Logic.Game
 {
     public class EmptyCell : Cell
     {
-        public override bool Accept(ICellVisitor<bool> visitor)
-        {
-            return visitor.Visit(this);
-        }
-
-        public override uint Accept(ICellVisitor<uint> visitor)
+        public override T Accept<T>(ICellVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }
