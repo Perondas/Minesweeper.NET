@@ -2,7 +2,7 @@
 
 namespace Minesweeper.Logic.Game
 {
-    public abstract class Cell : ICanBeOpened, ICellVisitable<bool>, ICellVisitable<uint>
+    public abstract class Cell : ICanBeOpened, ICellVisitable
     {
         public Cell()
         {
@@ -21,7 +21,6 @@ namespace Minesweeper.Logic.Game
             this.IsOpen = true;
         }
 
-        public abstract bool Accept(ICellVisitor<bool> visitor);
-        public abstract uint Accept(ICellVisitor<uint> visitor);
+        public abstract T Accept<T>(ICellVisitor<T> visitor);
     }
 }

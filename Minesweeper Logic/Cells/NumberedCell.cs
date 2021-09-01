@@ -9,14 +9,9 @@ namespace Minesweeper.Logic.Game
             this.Num = num;
         }
 
-        public int Num { get; private set; }
+        public int Num { get; set; }
 
-        public override bool Accept(ICellVisitor<bool> visitor)
-        {
-            return visitor.Visit(this);
-        }
-
-        public override uint Accept(ICellVisitor<uint> visitor)
+        public override T Accept<T>(ICellVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

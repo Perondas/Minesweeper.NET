@@ -25,7 +25,7 @@ namespace Minesweeper.Logic.Rules
         {
             if (cells.TryGetValue(lastOpenedCell, out var openedCell))
             {
-                if (openedCell.Accept(this))
+                if (openedCell.Accept<bool>(this))
                 {
                     foreach (var pos in cells.Keys.Where
                     (k => Enumerable.Range(lastOpenedCell.X - 1, lastOpenedCell.X + 1).Contains(k.X)

@@ -54,6 +54,7 @@
     <Compile Include="Actions\IAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\GameCreationRule.cs" />
+    <Compile Include="Rules\GameStartRule.cs" />
     <Compile Include="Rules\GameStateRule.cs" />
     <Compile Include="Rules\IRulebook.cs" />
     <Compile Include="Rules\OpenCellRule.cs" />
