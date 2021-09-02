@@ -5,7 +5,7 @@ using Minesweeper.Logic.Game;
 
 namespace Minesweeper.Logic.Rules
 {
-    public class StandartRulebook :IRulebook
+    public class StandartRulebook : IRulebook
     {
         private GameCreationRule gameCreationRule;
         private GameStateRule gameStateRule;
@@ -21,7 +21,7 @@ namespace Minesweeper.Logic.Rules
             this.gameStartRule = new GameStartRule();
         }
 
-        public Game.Game CreateGame(uint x, uint y)
+        public Game.Game CreateGame(int x, int y)
         {
             return this.gameCreationRule.CreateGame(x, y);
         }

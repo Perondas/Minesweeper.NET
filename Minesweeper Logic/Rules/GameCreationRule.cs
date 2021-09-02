@@ -4,9 +4,9 @@ namespace Minesweeper.Logic.Rules
 {
     public class GameCreationRule
     {
-        public Game.Game CreateGame(uint x, uint y)
+        public Game.Game CreateGame(int x, int y)
         {
-            throw new NotImplementedException();
+            return new Game.Game(x, y);
         }
     }
 }

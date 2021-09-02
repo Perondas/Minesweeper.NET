@@ -8,7 +8,7 @@ namespace Minesweeper.Logic.Rules
 {
     public interface IRulebook
     {
-        Game.Game CreateGame(uint x, uint y);
+        Game.Game CreateGame(int x, int y);
 
         Game.Game StartGame(Game.Game game, Position initialPosition, uint mineCount);
 
