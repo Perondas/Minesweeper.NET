@@ -4,7 +4,7 @@ using Minesweeper.Logic.Game;
 
 namespace Minesweeper.Logic.Actions
 {
-    public class OpenCellAction : IAction
+    public class OpenCellAction : IAction, IActionVisitable
     {
         private Position pos;
 
@@ -19,6 +19,11 @@ namespace Minesweeper.Logic.Actions
                 throw new ArgumentOutOfRangeException("Could not find a cell at the specified position");
             cell.Open();
             return game;
+        }
+
+        public T Visit<T>(IActionVisitor<T> visitor)
+        {
+            return visitor.Accept(this);
         }
     }
 }

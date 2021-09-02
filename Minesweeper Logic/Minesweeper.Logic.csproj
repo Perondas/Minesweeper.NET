@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\IActionVisitable.cs" />
+    <Compile Include="Actions\IActionVisitor.cs" />
     <Compile Include="Actions\OpenCellAction.cs" />
     <Compile Include="Cells\CellWithMine.cs" />
     <Compile Include="Cells\EmptyCell.cs" />
