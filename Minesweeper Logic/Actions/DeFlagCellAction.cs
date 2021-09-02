@@ -1,14 +1,13 @@
 ﻿using System;
 using Minesweeper.Logic.Data;
-using Minesweeper.Logic.Game;
 
 namespace Minesweeper.Logic.Actions
 {
-    public class OpenCellAction : IAction
+    public class DeFlagCellAction : IAction
     {
         private Position pos;
 
-        public OpenCellAction(Position pos)
+        public DeFlagCellAction(Position pos)
         {
             this.pos = pos;
         }
@@ -17,7 +16,7 @@ namespace Minesweeper.Logic.Actions
         {
             if (!game.Board.Cells.TryGetValue(this.pos, out var cell))
                 throw new ArgumentOutOfRangeException("Could not find a cell at the specified position");
-            cell.IsOpen = true;
+            cell.IsFlagged = false;
             return game;
         }
 

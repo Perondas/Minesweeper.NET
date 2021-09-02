@@ -7,14 +7,20 @@ namespace Minesweeper.Logic.Game
         public Cell()
         {
             this.IsOpen = false;
+            this.IsFlagged = false;
         }
 
         public bool IsOpen
         {
             get;
-            private set;
+            set;
         }
 
+        public bool IsFlagged
+        {
+            get;
+            set;
+        }
 
         public void Open()
         {

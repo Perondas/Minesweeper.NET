@@ -9,10 +9,13 @@ namespace Minesweeper.Logic.Rules
     {
         public GameState GetGameState(Game.Game game)
         {
-            if (game.Board.Cells.Values.Any(c => c.Accept(this) && c.IsOpen))
-                return GameState.Lost;
-
-            return game.Board.Cells.Values.Where(c => !c.Accept(this)).All(c => c.IsOpen) ? GameState.Won : GameState.Ongoing;
+            return game.Board.Cells.Values.Any(c => c.Accept(this) && c.IsOpen)
+                ? GameState.Lost
+                : game.Board.Cells.Values.Where(c => c.Accept(this)).All(m => m.IsFlagged)
+                    ? game.Board.Cells.Values.Where(c => !c.Accept(this)).All(c => c.IsOpen && !c.IsFlagged)
+                        ? GameState.Won
+                        : GameState.Ongoing
+                    : GameState.Ongoing;
         }
 
         public bool Visit(EmptyCell _)
