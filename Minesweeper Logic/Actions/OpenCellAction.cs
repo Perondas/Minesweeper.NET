@@ -1,5 +1,5 @@
 ﻿using System;
-using Minesweeper.Logic.Data;
+using Minesweeper.Common.Data;
 using Minesweeper.Logic.Game;
 
 namespace Minesweeper.Logic.Actions

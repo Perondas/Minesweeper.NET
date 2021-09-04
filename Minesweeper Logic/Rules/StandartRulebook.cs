@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
-using Minesweeper.Logic.Data;
 using Minesweeper.Logic.Game;
 
 namespace Minesweeper.Logic.Rules
@@ -21,9 +21,9 @@ namespace Minesweeper.Logic.Rules
             this.gameStartRule = new GameStartRule();
         }
 
-        public Game.Game CreateGame(int x, int y)
+        public Game.Game CreateGame(GameSettings settings)
         {
-            return this.gameCreationRule.CreateGame(x, y);
+            return this.gameCreationRule.CreateGame(settings);
         }
 
         public Game.Game StartGame(Game.Game game, Position initialPosition, uint mineCount)

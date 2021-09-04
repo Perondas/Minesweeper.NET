@@ -52,6 +52,11 @@
       <Project>{91af1ea0-f80a-4376-8e5c-2bcc7236e0d8}</Project>
       <Name>Minesweeper.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Minesweeper.Commmon\Minesweeper.Common.csproj">
+      <Project>{f24d1fd0-ebe5-4f1e-a8d1-f4b1f76a058f}</Project>
+      <Name>Minesweeper.Common</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

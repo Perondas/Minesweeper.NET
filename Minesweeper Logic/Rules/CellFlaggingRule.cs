@@ -1,6 +1,6 @@
 ﻿using System;
+using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
-using Minesweeper.Logic.Data;
 
 namespace Minesweeper.Logic.Rules
 {

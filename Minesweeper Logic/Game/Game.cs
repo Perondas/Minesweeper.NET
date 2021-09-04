@@ -1,10 +1,13 @@
-﻿namespace Minesweeper.Logic.Game
+﻿using Minesweeper.Common.Data;
+
+namespace Minesweeper.Logic.Game
 {
     public class Game
     {
-        public Game(int x, int y)
+        public Game(GameSettings settings)
         {
-            this.Board = new Board(x, y);
+            MineCount = settings.MineCount;
+            this.Board = new Board(settings.XSize, settings.YSize);
             this.Points = 0;
             this.HasStarted = false;
         }
@@ -15,5 +18,6 @@
 
         public Board Board { get; private set; }
 
+        public int MineCount { get; private set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.Logic.Data
+﻿namespace Minesweeper.Common.Data
 {
     public struct Position
     {

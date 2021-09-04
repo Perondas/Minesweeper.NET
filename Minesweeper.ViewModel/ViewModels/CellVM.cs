@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
-using Minesweeper.Logic.Data;
 using Minesweeper.Logic.Game;
 using Minesweeper.ViewModel.Annotations;
 
