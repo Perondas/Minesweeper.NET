@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:userControls="clr-namespace:Minesweeper.View.UserControls"
+                    xmlns:cell="clr-namespace:Minesweeper.ViewModel.ViewModels;assembly=Minesweeper.ViewModel"
+                    xmlns:converters="clr-namespace:Minesweeper.View.Converters"
+                    xmlns:selectors="clr-namespace:Minesweeper.View.Selectors">
+                    
+    <converters:CellNumberColorConverter x:Key="CellNumberColorConverter"/>
+    <selectors:CellTemplateSelector x:Key="CellTemplateSelector"/>
+    <DataTemplate x:Key="CellWithMineDataTemplate" DataType="{x:Type cell:CellVm}">
+        <Grid>
+            <Grid.RenderTransform>
+                <TranslateTransform X="{Binding Path=Position.X}" Y="{Binding Path=Position.Y}"/>
+            </Grid.RenderTransform>
+            <Viewbox MaxHeight="50" MaxWidth="50">
+                <userControls:Mine></userControls:Mine>
+            </Viewbox>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="CellWithNumberDataTemplate" DataType="{x:Type cell:CellVm}">
+        <Grid>
+            <Grid.RenderTransform>
+                <TranslateTransform X="{Binding Path=Position.X}" Y="{Binding Path=Position.Y}"/>
+            </Grid.RenderTransform>
+            <Label Content="{Binding Path=Num}" Foreground="{Binding Path=Num, Converter={StaticResource CellNumberColorConverter}}"/>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="EmptyCellDataTemplate" DataType="{x:Type cell:CellVm}">
+        <Grid>
+            <Grid.RenderTransform>
+                <TranslateTransform X="{Binding Path=Position.X}" Y="{Binding Path=Position.Y}"/>
+            </Grid.RenderTransform>
+            <Rectangle Width="50" Height="50" Fill="Green"></Rectangle>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

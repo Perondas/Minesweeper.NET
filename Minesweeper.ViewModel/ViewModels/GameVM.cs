@@ -1,22 +1,32 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Minesweeper.Common.Data;
 using Minesweeper.Logic.Game;
+using Minesweeper.Logic.Rules;
 using Minesweeper.ViewModel.Annotations;
 
 namespace Minesweeper.ViewModel.ViewModels
 {
-    public class GameVM : INotifyPropertyChanged
+    public class GameVm : INotifyPropertyChanged
     {
         private Game game;
-        private BoardVM board;
+        private BoardVm board;
+        private IRulebook book;
 
-        public GameVM(Game game)
+        public GameVm(GameSettings settings)
         {
-            this.game = game;
-            this.board = new BoardVM(game.Board);
+            this.book = new StandartRulebook();
+            this.game = this.book.CreateGame(settings);
+            this.board = new BoardVm(game.Board);
         }
 
-        public BoardVM Board => this.board;
+        public void Start()
+        {
+            this.book.StartGame(this.game, new Position(1, 1), this.game.MineCount);
+            this.board = new BoardVm(this.game.Board);
+        }
+
+        public BoardVm Board => this.board;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

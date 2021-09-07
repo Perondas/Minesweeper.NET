@@ -43,9 +43,9 @@
   <ItemGroup>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BoardVM.cs" />
-    <Compile Include="ViewModels\CellVM.cs" />
-    <Compile Include="ViewModels\GameVM.cs" />
+    <Compile Include="ViewModels\BoardVm.cs" />
+    <Compile Include="ViewModels\CellVm.cs" />
+    <Compile Include="ViewModels\GameVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Minesweeper Logic\Minesweeper.Logic.csproj">

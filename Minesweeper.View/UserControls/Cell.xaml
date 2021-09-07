@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Minesweeper.View.UserControls.Cell"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minesweeper.View.UserControls"
+             mc:Ignorable="d" 
+             x:Name="This"
+             d:DesignHeight="100" d:DesignWidth="100">
+    <Canvas>
+        <Rectangle Fill="Black" Width="100" Height="100"/>
+        <Rectangle Fill="LightGray" Margin="3" Width="94" Height="94"/>
+        <ItemsControl ItemsSource="{Binding ElementName=This, Path=CellVm}">
+            <DataTemplate>
+                
+            </DataTemplate>
+        </ItemsControl>
+        
+    </Canvas>
+</UserControl>

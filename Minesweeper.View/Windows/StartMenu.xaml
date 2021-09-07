@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         SizeToContent="WidthAndHeight"
-        Title="Start new Game">
+        Title="Start a new Game">
     <StackPanel>
         <Label FontSize="30">Enter criteria for a new game</Label>
         <Grid>

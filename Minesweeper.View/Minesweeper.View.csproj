@@ -55,9 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\CellNumberColorConverter.cs" />
+    <Compile Include="Selectors\CellTemplateSelector.cs" />
+    <Compile Include="UserControls\Cell.xaml.cs">
+      <DependentUpon>Cell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Mine.xaml.cs">
+      <DependentUpon>Mine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Cell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Mine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +122,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Minesweeper Logic\Minesweeper.Logic.csproj">
+      <Project>{91AF1EA0-F80A-4376-8E5C-2BCC7236E0D8}</Project>
+      <Name>Minesweeper.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Minesweeper.Commmon\Minesweeper.Common.csproj">
       <Project>{f24d1fd0-ebe5-4f1e-a8d1-f4b1f76a058f}</Project>
       <Name>Minesweeper.Common</Name>
@@ -111,8 +135,6 @@
       <Name>Minesweeper.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

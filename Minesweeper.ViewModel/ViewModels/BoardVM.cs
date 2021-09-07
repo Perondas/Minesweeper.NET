@@ -6,24 +6,28 @@ using Minesweeper.ViewModel.Annotations;
 
 namespace Minesweeper.ViewModel.ViewModels
 {
-    public class BoardVM : INotifyPropertyChanged
+    public class BoardVm : INotifyPropertyChanged
     {
         private Board board;
 
-        public BoardVM(Board board)
+        public BoardVm(Board board)
         {
             this.board = board;
-            this.Cells = new ObservableCollection<CellVM>();
+            this.Cells = new ObservableCollection<CellVm>();
             foreach (var pos in board.Cells.Keys)
             {
                 board.Cells.TryGetValue(pos, out var cell);
-                this.Cells.Add(new CellVM(pos, cell));
+                this.Cells.Add(new CellVm(pos, cell));
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<CellVM> Cells;
+        public ObservableCollection<CellVm> Cells
+        {
+            get;
+            private set;
+        }
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
