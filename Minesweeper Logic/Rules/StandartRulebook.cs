@@ -26,7 +26,7 @@ namespace Minesweeper.Logic.Rules
             return this.gameCreationRule.CreateGame(settings);
         }
 
-        public Game.Game StartGame(Game.Game game, Position initialPosition, uint mineCount)
+        public Game.Game StartGame(Game.Game game, Position initialPosition, int mineCount)
         {
             return this.gameStartRule.StartGame(game, initialPosition, mineCount);
         }

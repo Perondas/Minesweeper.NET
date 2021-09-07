@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Minesweeper.Common.Data;
 using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Visitor;
@@ -7,7 +8,7 @@ namespace Minesweeper.Logic.Rules
 {
     public class GameStartRule : ICellVisitor<int>
     {
-        public Game.Game StartGame(Game.Game game, Position firstPosition, uint mineCount)
+        public Game.Game StartGame(Game.Game game, Position firstPosition, int mineCount)
         {
             var rand = new Random();
             for (uint x = 0; x < mineCount; x++)
@@ -22,7 +23,8 @@ namespace Minesweeper.Logic.Rules
                 game.Board.Cells.Add(pos, new CellWithMine());
             }
 
-            foreach (var minePos in game.Board.Cells.Keys)
+            var keys = game.Board.Cells.Keys.ToList();
+            foreach (var minePos in keys)
             {
                 for (var x1 = -1; x1 < 2; x1++)
                 {

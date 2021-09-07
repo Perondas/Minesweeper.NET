@@ -10,7 +10,7 @@ namespace Minesweeper.Logic.Rules
     {
         Game.Game CreateGame(GameSettings settings);
 
-        Game.Game StartGame(Game.Game game, Position initialPosition, uint mineCount);
+        Game.Game StartGame(Game.Game game, Position initialPosition, int mineCount);
 
         GameState GameStatus(Game.Game game);
 
