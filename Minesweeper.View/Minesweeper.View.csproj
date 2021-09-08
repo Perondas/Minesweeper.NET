@@ -55,10 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\CellNumberColorConverter.cs" />
+    <Compile Include="Converters\Multiplier.cs" />
     <Compile Include="Selectors\CellTemplateSelector.cs" />
     <Compile Include="UserControls\Cell.xaml.cs">
       <DependentUpon>Cell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Flag.xaml.cs">
+      <DependentUpon>Flag.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Mine.xaml.cs">
       <DependentUpon>Mine.xaml</DependentUpon>
@@ -66,11 +71,15 @@
     <Compile Include="Windows\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\Dictionary.xaml">
+    <Page Include="Graphics\Graphics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Cell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Flag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

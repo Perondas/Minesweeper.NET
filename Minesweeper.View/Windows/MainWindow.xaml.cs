@@ -17,7 +17,7 @@ namespace Minesweeper.View.Windows
 
         public MainWindow()
         {
-            this.GameVm = new GameVm(new GameSettings(20, 20, 10));
+            this.GameVm = new GameVm(new GameSettings(5, 5, 10));
             this.GameVm.Start();
             InitializeComponent();
         }

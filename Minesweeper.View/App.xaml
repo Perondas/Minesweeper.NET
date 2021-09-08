@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Minesweeper.View"
              StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="Resources/Dictionary.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Graphics/Graphics.xaml"></ResourceDictionary>
     </Application.Resources>
 </Application>

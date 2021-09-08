@@ -27,6 +27,11 @@ namespace Minesweeper.Logic.Game
             this.IsOpen = true;
         }
 
+        public void Flag()
+        {
+            this.IsFlagged = !this.IsFlagged;
+        }
+
         public abstract T Accept<T>(ICellVisitor<T> visitor);
     }
 }

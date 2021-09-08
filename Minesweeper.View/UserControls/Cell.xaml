@@ -4,17 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Minesweeper.View.UserControls"
+             xmlns:selectors="clr-namespace:Minesweeper.View.Selectors"
              mc:Ignorable="d" 
              x:Name="This"
-             d:DesignHeight="100" d:DesignWidth="100">
-    <Canvas>
-        <Rectangle Fill="Black" Width="100" Height="100"/>
-        <Rectangle Fill="LightGray" Margin="3" Width="94" Height="94"/>
-        <ItemsControl ItemsSource="{Binding ElementName=This, Path=CellVm}">
-            <DataTemplate>
-                
-            </DataTemplate>
-        </ItemsControl>
-        
-    </Canvas>
+             d:DesignHeight="50" d:DesignWidth="50">
+    <Grid>
+        <Rectangle Fill="Black" Width="50" Height="50"/>
+        <Rectangle Fill="LightGray" Margin="2" Width="46" Height="46"/>
+        <Viewbox MaxHeight="46" MaxWidth="46" Margin="2">
+            <ContentControl Content="{Binding ElementName=This, Path=CellVm}" ContentTemplateSelector="{StaticResource CellTemplateSelector}"/>
+        </Viewbox>
+        <Button Margin="2" Width="46" Height="46" 
+                x:Name="Button" 
+                Click="Button_OnClick" 
+                MouseRightButtonUp="Button_OnMouseRightButtonUp"
+                Opacity="{Binding ElementName=This, Path=CellVm.IsOpen, Converter={StaticResource BoolToOpacityConverter}}"
+                Background="DarkGray"/>
+        <Viewbox Margin="2" MaxWidth="46" MaxHeight="46" x:Name="Flag" Opacity="0">
+            <local:Flag/>
+        </Viewbox>
+    </Grid>
 </UserControl>

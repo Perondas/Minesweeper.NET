@@ -64,5 +64,15 @@ namespace Minesweeper.ViewModel.ViewModels
         {
             return visitedCell.Num;
         }
+
+        public void Open()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Flag()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

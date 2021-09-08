@@ -7,30 +7,31 @@
                     
     <converters:CellNumberColorConverter x:Key="CellNumberColorConverter"/>
     <selectors:CellTemplateSelector x:Key="CellTemplateSelector"/>
+    <converters:ValueMultiplier x:Key="ValueMultiplier"/>
+    <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
     <DataTemplate x:Key="CellWithMineDataTemplate" DataType="{x:Type cell:CellVm}">
         <Grid>
-            <Grid.RenderTransform>
-                <TranslateTransform X="{Binding Path=Position.X}" Y="{Binding Path=Position.Y}"/>
-            </Grid.RenderTransform>
             <Viewbox MaxHeight="50" MaxWidth="50">
                 <userControls:Mine></userControls:Mine>
             </Viewbox>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="CellWithNumberDataTemplate" DataType="{x:Type cell:CellVm}">
-        <Grid>
-            <Grid.RenderTransform>
-                <TranslateTransform X="{Binding Path=Position.X}" Y="{Binding Path=Position.Y}"/>
-            </Grid.RenderTransform>
-            <Label Content="{Binding Path=Num}" Foreground="{Binding Path=Num, Converter={StaticResource CellNumberColorConverter}}"/>
+        <Grid Width="50" Height="50" RenderTransformOrigin="0,0">
+            <Viewbox MaxHeight="50" MaxWidth="50">
+                <Label FontSize="35" Content="{Binding Path=Num}"
+                       Foreground="{Binding Path=Num, Converter={StaticResource CellNumberColorConverter}}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            </Viewbox>
+            
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="EmptyCellDataTemplate" DataType="{x:Type cell:CellVm}">
-        <Grid>
-            <Grid.RenderTransform>
-                <TranslateTransform X="{Binding Path=Position.X}" Y="{Binding Path=Position.Y}"/>
-            </Grid.RenderTransform>
-            <Rectangle Width="50" Height="50" Fill="Green"></Rectangle>
+        <Grid Width="50" Height="50">
+            <Viewbox MaxHeight="50" MaxWidth="50">
+                <Rectangle Width="50" Height="50" Fill="Green"></Rectangle>
+            </Viewbox>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

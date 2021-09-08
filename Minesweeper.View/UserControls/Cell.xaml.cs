@@ -34,5 +34,15 @@ namespace Minesweeper.View.UserControls
             get => this.GetValue(CellVmDependency) as CellVm;
             set => this.SetValue(CellVmDependency, value);
         }
+
+        private void Button_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.CellVm.Open();
+        }
+
+        private void Button_OnMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.CellVm.Flag();
+        }
     }
 }
