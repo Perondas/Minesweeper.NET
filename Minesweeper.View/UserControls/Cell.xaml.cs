@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Minesweeper.View.EventArgs;
 using Minesweeper.ViewModel.ViewModels;
 
 namespace Minesweeper.View.UserControls
@@ -26,8 +16,30 @@ namespace Minesweeper.View.UserControls
             InitializeComponent();
         }
 
+        public delegate void CellClickedEventHandler(object sender, CellClickedEventArgs e);
+
         public static readonly DependencyProperty CellVmDependency =
             DependencyProperty.Register("CellVm", typeof(CellVm), typeof(Cell));
+
+        public static readonly RoutedEvent RightClickEvent =
+            EventManager.RegisterRoutedEvent("RightClick", RoutingStrategy.Bubble,
+                typeof(CellClickedEventHandler), typeof(Cell));
+
+        public static readonly RoutedEvent LeftClickEvent =
+            EventManager.RegisterRoutedEvent("LeftClick", RoutingStrategy.Bubble,
+                typeof(CellClickedEventHandler), typeof(Cell));
+
+        public event CellClickedEventHandler RightClick
+        {
+            add => AddHandler(RightClickEvent, value);
+            remove => RemoveHandler(RightClickEvent, value);
+        }
+
+        public event CellClickedEventHandler LeftClick
+        {
+            add => AddHandler(LeftClickEvent, value);
+            remove => RemoveHandler(LeftClickEvent, value);
+        }
 
         public CellVm CellVm
         {
@@ -37,12 +49,14 @@ namespace Minesweeper.View.UserControls
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
-            this.CellVm.Open();
+            var args = new CellClickedEventArgs(LeftClickEvent, this.CellVm.Position);
+            this.RaiseEvent(args);
         }
 
         private void Button_OnMouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            this.CellVm.Flag();
+            var args = new CellClickedEventArgs(RightClickEvent, this.CellVm.Position);
+            this.RaiseEvent(args);
         }
     }
 }

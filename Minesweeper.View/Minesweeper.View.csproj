@@ -58,6 +58,7 @@
     <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\CellNumberColorConverter.cs" />
     <Compile Include="Converters\Multiplier.cs" />
+    <Compile Include="EventArgs\CellClickedEventArgs.cs" />
     <Compile Include="Selectors\CellTemplateSelector.cs" />
     <Compile Include="UserControls\Cell.xaml.cs">
       <DependentUpon>Cell.xaml</DependentUpon>

@@ -27,7 +27,9 @@
                                     <TranslateTransform X="{Binding Path=Position.X, Converter={StaticResource ValueMultiplier}, ConverterParameter=50}"
                                                         Y="{Binding Path=Position.Y, Converter={StaticResource ValueMultiplier}, ConverterParameter=50}"/>
                                 </Grid.RenderTransform>
-                                <userControls:Cell CellVm="{Binding}"/>
+                                <userControls:Cell CellVm="{Binding}"
+                                                   RightClick="Cell_OnRightClick"
+                                                   LeftClick="Cell_OnLeftClick"/>
                             </Grid>
                         </Viewbox>
                     </DataTemplate>

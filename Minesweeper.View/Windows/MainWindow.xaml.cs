@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Minesweeper.Common.Data;
+using Minesweeper.View.EventArgs;
 using Minesweeper.ViewModel.ViewModels;
 
 namespace Minesweeper.View.Windows
@@ -20,6 +22,16 @@ namespace Minesweeper.View.Windows
             this.GameVm = new GameVm(new GameSettings(5, 5, 10));
             this.GameVm.Start();
             InitializeComponent();
+        }
+
+        private void Cell_OnRightClick(object sender, CellClickedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Cell_OnLeftClick(object sender, CellClickedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
