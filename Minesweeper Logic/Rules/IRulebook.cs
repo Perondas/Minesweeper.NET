@@ -14,6 +14,8 @@ namespace Minesweeper.Logic.Rules
 
         GameState GameStatus(Game.Game game);
 
-        IEnumerable<IAction> ExecuteOnCell(Game.Game game, Position pos);
+        IEnumerable<IAction> OpenCell(Game.Game game, Position pos);
+
+        IEnumerable<IAction> FlagCell(Game.Game game, Position pos);
     }
 }

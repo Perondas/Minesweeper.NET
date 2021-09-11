@@ -19,19 +19,19 @@ namespace Minesweeper.View.Windows
 
         public MainWindow()
         {
-            this.GameVm = new GameVm(new GameSettings(5, 5, 10));
+            this.GameVm = new GameVm(new GameSettings(10, 10, 5));
             this.GameVm.Start();
             InitializeComponent();
         }
 
         private void Cell_OnRightClick(object sender, CellClickedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.GameVm.FlagCell(e.Position);
         }
 
         private void Cell_OnLeftClick(object sender, CellClickedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.GameVm.OpenCell(e.Position);
         }
     }
 }

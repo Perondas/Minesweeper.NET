@@ -11,6 +11,7 @@ namespace Minesweeper.Logic.Rules
         private GameStateRule gameStateRule;
         private OpenCellRule openCellRule;
         private GameStartRule gameStartRule;
+        private CellFlaggingRule cellFlaggingRule;
 
 
         public StandartRulebook()
@@ -19,6 +20,7 @@ namespace Minesweeper.Logic.Rules
             this.gameStateRule = new GameStateRule();
             this.openCellRule = new OpenCellRule();
             this.gameStartRule = new GameStartRule();
+            this.cellFlaggingRule = new CellFlaggingRule();
         }
 
         public Game.Game CreateGame(GameSettings settings)
@@ -36,9 +38,14 @@ namespace Minesweeper.Logic.Rules
             return this.gameStateRule.GetGameState(game);
         }
 
-        public IEnumerable<IAction> ExecuteOnCell(Game.Game game, Position pos)
+        public IEnumerable<IAction> OpenCell(Game.Game game, Position pos)
         {
             return this.openCellRule.OpenCell(game, pos);
+        }
+
+        public IEnumerable<IAction> FlagCell(Game.Game game, Position pos)
+        {
+            return this.cellFlaggingRule.FlagCell(game, pos);
         }
     }
 }

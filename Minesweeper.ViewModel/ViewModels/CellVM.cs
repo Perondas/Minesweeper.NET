@@ -9,32 +9,22 @@ namespace Minesweeper.ViewModel.ViewModels
 {
     public class CellVm : INotifyPropertyChanged, ICellVisitor<int?>
     {
-        private Position pos;
-
-        private Cell cell;
-
         public CellVm(Position pos, Cell cell)
         {
-            this.pos = pos;
-            this.cell = cell;
+            this.Position = pos;
+            this.Cell = cell;
             this.Num = cell.Accept(this);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool IsOpen 
-        {
-            get => this.cell.IsOpen;
-            set
-            {
-                this.cell.IsOpen = value;
-                this.OnPropertyChanged();
-            }
-        }
+        public bool IsOpen => this.Cell.IsOpen;
 
-        public Position Position => this.pos;
+        public bool IsNotFlagged => !this.Cell.IsFlagged;
 
-        public Cell Cell => this.cell;
+        public Position Position { get; }
+
+        public Cell Cell { get; }
 
         public int? Num
         {
@@ -64,14 +54,10 @@ namespace Minesweeper.ViewModel.ViewModels
             return visitedCell.Num;
         }
 
-        public void Open()
+        public void Update()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void Flag()
-        {
-            throw new System.NotImplementedException();
+            this.OnPropertyChanged(nameof(this.IsNotFlagged));
+            this.OnPropertyChanged(nameof(this.IsOpen));
         }
     }
 }

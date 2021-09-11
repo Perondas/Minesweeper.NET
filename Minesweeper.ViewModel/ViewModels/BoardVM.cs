@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using Minesweeper.Common.Data;
 using Minesweeper.Logic.Game;
 using Minesweeper.ViewModel.Annotations;
 
@@ -33,6 +35,12 @@ namespace Minesweeper.ViewModel.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void UpdateCell(Position pos)
+        {
+            var cell = this.Cells.First(c => c.Position == pos);
+            cell.Update();
         }
     }
 }
