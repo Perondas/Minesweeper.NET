@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Minesweeper.Common.Data;
+using Minesweeper.Logic.Actions;
 using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Rules;
 using Minesweeper.ViewModel.Annotations;
@@ -34,6 +36,34 @@ namespace Minesweeper.ViewModel.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void FlagCell(Position position)
+        {
+            var actions = this.book.FlagCell(this.game, position);
+            this.ExecuteActions(actions);
+        }
+
+        private void ExecuteActions(IEnumerable<IAction> actions)
+        {
+            foreach (var action in actions)
+            {
+                action.Execute(this.game);
+            }
+
+            foreach (var action in actions)
+            {
+                foreach (var pos in action.ChangedPositions())
+                {
+                    this.Board.UpdateCell(pos);
+                }
+            }
+        }
+
+        public void OpenCell(Position position)
+        {
+            var actions = this.book.OpenCell(this.game, position);
+            this.ExecuteActions(actions);
         }
     }
 }

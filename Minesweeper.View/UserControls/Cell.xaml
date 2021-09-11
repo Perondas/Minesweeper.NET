@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Minesweeper.View.UserControls"
-             xmlns:selectors="clr-namespace:Minesweeper.View.Selectors"
              mc:Ignorable="d" 
              x:Name="This"
              d:DesignHeight="50" d:DesignWidth="50">
@@ -20,7 +19,8 @@
                 MouseRightButtonUp="Button_OnMouseRightButtonUp"
                 Opacity="{Binding ElementName=This, Path=CellVm.IsOpen, Converter={StaticResource BoolToOpacityConverter}}"
                 Background="DarkGray"/>
-        <Viewbox Margin="2" MaxWidth="46" MaxHeight="46" x:Name="Flag" Opacity="0">
+        <Viewbox Margin="2" MaxWidth="46" MaxHeight="46" x:Name="Flag"
+                 Opacity="{Binding ElementName=This, Path=CellVm.IsNotFlagged, Converter={StaticResource BoolToOpacityConverter}}">
             <local:Flag/>
         </Viewbox>
     </Grid>

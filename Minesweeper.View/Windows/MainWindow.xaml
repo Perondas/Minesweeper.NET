@@ -7,7 +7,7 @@
         xmlns:userControls="clr-namespace:Minesweeper.View.UserControls"
         x:Name="This"
         mc:Ignorable="d"
-        Title="Minesweeper" Height="450" Width="800">
+        Title="Minesweeper" Height="800" Width="800">
     <Grid>
         <Viewbox Stretch="Uniform" Height="500" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top">
             <ItemsControl HorizontalAlignment="Left" 

@@ -1,4 +1,7 @@
-﻿namespace Minesweeper.Logic.Actions
+﻿using System.Collections.Generic;
+using Minesweeper.Common.Data;
+
+namespace Minesweeper.Logic.Actions
 {
     public class EmptyAction : IAction
     {
@@ -10,6 +13,11 @@
         public Game.Game Execute(Game.Game game)
         {
             return game;
+        }
+
+        public IEnumerable<Position> ChangedPositions()
+        {
+            return new List<Position>();
         }
     }
 }

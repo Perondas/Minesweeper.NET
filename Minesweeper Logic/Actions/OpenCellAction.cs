@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Minesweeper.Common.Data;
 using Minesweeper.Logic.Game;
 
@@ -19,6 +20,11 @@ namespace Minesweeper.Logic.Actions
                 throw new ArgumentOutOfRangeException("Could not find a cell at the specified position");
             cell.IsOpen = true;
             return game;
+        }
+
+        public IEnumerable<Position> ChangedPositions()
+        {
+            return new[] {this.pos};
         }
 
         public T Visit<T>(IActionVisitor<T> visitor)
