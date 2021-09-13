@@ -1,0 +1,41 @@
+﻿<Page x:Class="Minesweeper.View.Pages.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Minesweeper.View.Pages"
+      xmlns:userControls="clr-namespace:Minesweeper.View.UserControls"
+      x:Name="This"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Game Page">
+    <Grid>
+        <Viewbox Stretch="Uniform" Height="500" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ItemsControl HorizontalAlignment="Left" 
+                          VerticalAlignment="Top" 
+                          ItemsSource="{Binding ElementName=This, Path=GameVm.Board.Cells}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="250" 
+                                Height="250"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <Viewbox MaxHeight="50" MaxWidth="50">
+                            <Grid>
+                                <Grid.RenderTransform>
+                                    <TranslateTransform X="{Binding Path=Position.X, Converter={StaticResource ValueMultiplier}, ConverterParameter=50}"
+                                                        Y="{Binding Path=Position.Y, Converter={StaticResource ValueMultiplier}, ConverterParameter=50}"/>
+                                </Grid.RenderTransform>
+                                <userControls:Cell CellVm="{Binding}"
+                                                   RightClick="Cell_OnRightClick"
+                                                   LeftClick="Cell_OnLeftClick"/>
+                            </Grid>
+                        </Viewbox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
+    </Grid>
+</Page>

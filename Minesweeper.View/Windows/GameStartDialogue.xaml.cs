@@ -18,13 +18,13 @@ namespace Minesweeper.View.Windows
     /// <summary>
     /// Interaction logic for StartMenu.xaml
     /// </summary>
-    public partial class StartMenu : Window
+    public partial class GameStartDialogue : Window
     {
         private string hCells;
         private string vCells;
         private string mines;
 
-        public StartMenu()
+        public GameStartDialogue()
         {
             this.hCells = "";
             this.vCells = "";

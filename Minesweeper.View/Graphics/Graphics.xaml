@@ -24,14 +24,8 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
             </Viewbox>
-            
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="EmptyCellDataTemplate" DataType="{x:Type cell:CellVm}">
-        <Grid Width="50" Height="50">
-            <Viewbox MaxHeight="50" MaxWidth="50">
-                <Rectangle Width="50" Height="50" Fill="Green"></Rectangle>
-            </Viewbox>
-        </Grid>
     </DataTemplate>
 </ResourceDictionary>

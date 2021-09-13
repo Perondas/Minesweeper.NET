@@ -13,21 +13,21 @@ namespace Minesweeper.View.Converters
             switch (num)
             {
                 case 1:
-                    return Colors.Blue;
+                    return new SolidColorBrush(Colors.Blue);
                 case 2:
-                    return Colors.Green;
+                    return new SolidColorBrush(Colors.Green);
                 case 3:
-                    return Colors.Red;
+                    return new SolidColorBrush(Colors.Red);
                 case 4:
-                    return Colors.Purple;
+                    return new SolidColorBrush(Colors.Purple);
                 case 5:
-                    return Colors.Maroon;
+                    return new SolidColorBrush(Colors.Maroon);
                 case 6:
-                    return Colors.Turquoise;
+                    return new SolidColorBrush(Colors.Turquoise);
                 case 7:
-                    return Colors.Black;
+                    return new SolidColorBrush(Colors.Black);
                 case 8:
-                    return Colors.Gray;
+                    return new SolidColorBrush(Colors.Gray);
                 default:
                     throw new ArgumentOutOfRangeException("The value must be between 1 and 9");
             }

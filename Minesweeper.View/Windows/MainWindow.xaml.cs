@@ -2,6 +2,7 @@
 using System.Windows;
 using Minesweeper.Common.Data;
 using Minesweeper.View.EventArgs;
+using Minesweeper.View.Pages;
 using Minesweeper.ViewModel.ViewModels;
 
 namespace Minesweeper.View.Windows
@@ -11,27 +12,12 @@ namespace Minesweeper.View.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        public GameVm GameVm
-        {
-            get;
-            private set;
-        }
-
         public MainWindow()
         {
-            this.GameVm = new GameVm(new GameSettings(10, 10, 5));
-            this.GameVm.Start();
+            var page = new MainMenu();
+            
             InitializeComponent();
-        }
-
-        private void Cell_OnRightClick(object sender, CellClickedEventArgs e)
-        {
-            this.GameVm.FlagCell(e.Position);
-        }
-
-        private void Cell_OnLeftClick(object sender, CellClickedEventArgs e)
-        {
-            this.GameVm.OpenCell(e.Position);
+            this.Frame.Navigate(page);
         }
     }
 }
