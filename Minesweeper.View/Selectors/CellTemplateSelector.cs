@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using Minesweeper.Logic.Game;
+﻿using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Visitor;
 using Minesweeper.ViewModel.ViewModels;
+using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Minesweeper.View.Selectors
 {

@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterOwner"
         SizeToContent="WidthAndHeight"
         Title="Start a new Game">
-    <StackPanel>
+    <StackPanel Background="Wheat">
         <Label FontSize="30">Enter criteria for a new game</Label>
         <Grid>
             <Grid.RowDefinitions>

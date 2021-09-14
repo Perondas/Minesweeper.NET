@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
-using Minesweeper.Logic.Game;
+﻿using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Visitor;
+using System.Linq;
 
 namespace Minesweeper.Logic.Rules
 {

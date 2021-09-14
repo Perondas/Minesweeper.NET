@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Minesweeper.Common.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Minesweeper.Common.Data;
 
 namespace Minesweeper.View.Windows
 {
@@ -32,7 +20,7 @@ namespace Minesweeper.View.Windows
             InitializeComponent();
         }
 
-        public GameSettings? Display ()
+        public GameSettings? Display()
         {
             this.ShowDialog();
 
@@ -41,7 +29,7 @@ namespace Minesweeper.View.Windows
                 : !int.TryParse(this.vCells, out var vResult)
                     ? null
                     : !int.TryParse(this.mines, out var mResult)
-                        ? (GameSettings?) null
+                        ? (GameSettings?)null
                         : new GameSettings(hResult, vResult, mResult);
         }
 

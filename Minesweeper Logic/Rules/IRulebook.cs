@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Minesweeper.Common.Data;
+﻿using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
 using Minesweeper.Logic.Game;
+using System.Collections.Generic;
 
 namespace Minesweeper.Logic.Rules
 {
@@ -10,7 +9,7 @@ namespace Minesweeper.Logic.Rules
     {
         Game.Game CreateGame(GameSettings settings);
 
-        Game.Game StartGame(Game.Game game, Position initialPosition, int mineCount);
+        IEnumerable<IAction> StartGame(Game.Game game, Position initialPosition, int mineCount);
 
         GameState GameStatus(Game.Game game);
 

@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Minesweeper.Common.Data;
+﻿using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
 using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Rules;
 using Minesweeper.ViewModel.Annotations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Minesweeper.ViewModel.ViewModels
 {
@@ -22,13 +23,24 @@ namespace Minesweeper.ViewModel.ViewModels
             this.board = new BoardVm(game.Board);
         }
 
-        public void Start()
+        public void Start(Position pos)
         {
-            this.book.StartGame(this.game, new Position(1, 1), this.game.MineCount);
-            this.board = new BoardVm(this.game.Board);
+            var actions = this.book.StartGame(this.game, pos, this.game.MineCount);
+            this.ExecuteActions(actions);
         }
 
-        public BoardVm Board => this.board;
+        public BoardVm Board
+        {
+            get
+            {
+                return this.board;
+            }
+            set
+            {
+                this.board = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,12 +63,11 @@ namespace Minesweeper.ViewModel.ViewModels
                 action.Execute(this.game);
             }
 
-            foreach (var action in actions)
+            var changedPositions = actions.SelectMany(a => a.ChangedPositions()).Distinct();
+
+            foreach (var changes in changedPositions)
             {
-                foreach (var pos in action.ChangedPositions())
-                {
-                    this.Board.UpdateCell(pos);
-                }
+                this.board.UpdateCell(changes);
             }
         }
 

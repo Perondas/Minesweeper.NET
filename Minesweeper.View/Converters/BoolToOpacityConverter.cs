@@ -9,7 +9,7 @@ namespace Minesweeper.View.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is bool val)) throw new ArgumentException($"The passed value must be of type {typeof(bool)}");
-            return val ?  0 :  100;
+            return val ? 0 : 100;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

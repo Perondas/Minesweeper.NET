@@ -1,7 +1,5 @@
-﻿using System.CodeDom;
+﻿using Minesweeper.Common.Data;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Minesweeper.Common.Data;
 
 namespace Minesweeper.Logic.Game
 {

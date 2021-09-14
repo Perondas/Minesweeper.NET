@@ -13,7 +13,7 @@ namespace Minesweeper.Common.Data
         public int X { get; private set; }
         public int Y { get; private set; }
 
-        public bool IsPositive ()
+        public bool IsPositive()
         {
             return this.X >= 0 && this.Y >= 0;
         }

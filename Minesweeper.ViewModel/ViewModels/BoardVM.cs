@@ -1,25 +1,25 @@
-﻿using System.Collections.ObjectModel;
+﻿using Minesweeper.Common.Data;
+using Minesweeper.Logic.Game;
+using Minesweeper.ViewModel.Annotations;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Minesweeper.Common.Data;
-using Minesweeper.Logic.Game;
-using Minesweeper.ViewModel.Annotations;
 
 namespace Minesweeper.ViewModel.ViewModels
 {
     public class BoardVm : INotifyPropertyChanged
     {
         private Board board;
+        private ObservableCollection<CellVm> cells;
 
         public BoardVm(Board board)
         {
             this.board = board;
             this.Cells = new ObservableCollection<CellVm>();
-            foreach (var pos in board.Cells.Keys)
+            foreach (var pair in board.Cells)
             {
-                board.Cells.TryGetValue(pos, out var cell);
-                this.Cells.Add(new CellVm(pos, cell));
+                this.Cells.Add(new CellVm(pair.Key, pair.Value));
             }
         }
 
@@ -27,8 +27,15 @@ namespace Minesweeper.ViewModel.ViewModels
 
         public ObservableCollection<CellVm> Cells
         {
-            get;
-            private set;
+            get
+            {
+                return this.cells;
+            }
+            private set
+            {
+                this.cells = value;
+                this.OnPropertyChanged();
+            }
         }
 
         [NotifyPropertyChangedInvocator]
@@ -39,8 +46,9 @@ namespace Minesweeper.ViewModel.ViewModels
 
         public void UpdateCell(Position pos)
         {
-            var cell = this.Cells.First(c => c.Position == pos);
-            cell.Update();
+            this.board.Cells.TryGetValue(pos, out var cell);
+            this.cells.Remove(this.Cells.First(c => c.Position == pos));
+            this.cells.Add(new CellVm(pos, cell));
         }
     }
 }

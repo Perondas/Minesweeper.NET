@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Minesweeper.Common.Data;
+using Minesweeper.Logic.Visitor;
+using System;
 using System.Collections.Generic;
-using Minesweeper.Common.Data;
 
 namespace Minesweeper.Logic.Actions
 {
@@ -23,7 +24,7 @@ namespace Minesweeper.Logic.Actions
 
         public IEnumerable<Position> ChangedPositions()
         {
-            return new[] {this.pos};
+            return new[] { this.pos };
         }
 
         public T Visit<T>(IActionVisitor<T> visitor)

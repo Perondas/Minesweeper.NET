@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using Minesweeper.Common.Data;
+﻿using Minesweeper.Common.Data;
+using System.Windows;
 
 namespace Minesweeper.View.EventArgs
 {

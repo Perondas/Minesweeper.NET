@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Minesweeper.Common.Data;
+﻿using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
 using Minesweeper.Logic.Game;
+using System.Collections.Generic;
 
 namespace Minesweeper.Logic.Rules
 {
@@ -28,7 +28,7 @@ namespace Minesweeper.Logic.Rules
             return this.gameCreationRule.CreateGame(settings);
         }
 
-        public Game.Game StartGame(Game.Game game, Position initialPosition, int mineCount)
+        public IEnumerable<IAction> StartGame(Game.Game game, Position initialPosition, int mineCount)
         {
             return this.gameStartRule.StartGame(game, initialPosition, mineCount);
         }

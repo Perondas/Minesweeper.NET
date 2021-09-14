@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Minesweeper.Common.Data;
+﻿using Minesweeper.Common.Data;
 using Minesweeper.Logic.Actions;
 using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Visitor;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Minesweeper.Logic.Rules
 {
     public class OpenCellRule : ICellVisitor<bool>
     {
-        public IEnumerable<IAction> OpenCell (Game.Game game, Position pos)
+        public IEnumerable<IAction> OpenCell(Game.Game game, Position pos)
         {
             if (game.Board.Cells.TryGetValue(pos, out var openedCell) && !openedCell.IsFlagged)
             {
@@ -21,7 +21,7 @@ namespace Minesweeper.Logic.Rules
                 return result.Select(p => new OpenCellAction(p));
             }
 
-            return new[] {new EmptyAction()};
+            return new[] { new EmptyAction() };
         }
 
         private List<Position> CheckCells(Position lastOpenedCell, Dictionary<Position, Cell> cells, List<Position> foundCells)
@@ -54,7 +54,7 @@ namespace Minesweeper.Logic.Rules
             {
                 throw new ArgumentException("Could not find last opened cell");
             }
-        } 
+        }
 
         public bool Visit(EmptyCell cell)
         {

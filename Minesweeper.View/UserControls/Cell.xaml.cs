@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using Minesweeper.View.EventArgs;
+using Minesweeper.ViewModel.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Minesweeper.View.EventArgs;
-using Minesweeper.ViewModel.ViewModels;
 
 namespace Minesweeper.View.UserControls
 {

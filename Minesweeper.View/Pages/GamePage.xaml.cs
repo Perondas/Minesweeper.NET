@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Minesweeper.Common.Data;
-using Minesweeper.View.EventArgs;
+﻿using Minesweeper.View.EventArgs;
 using Minesweeper.ViewModel.ViewModels;
+using System.Windows.Controls;
 
 namespace Minesweeper.View.Pages
 {
@@ -23,6 +9,8 @@ namespace Minesweeper.View.Pages
     /// </summary>
     public partial class GamePage : Page
     {
+        private bool hasStarted;
+
         public GameVm GameVm
         {
             get;
@@ -32,17 +20,28 @@ namespace Minesweeper.View.Pages
         public GamePage(GameVm game)
         {
             this.GameVm = game;
-            this.GameVm.Start();
+            this.hasStarted = false;
             InitializeComponent();
         }
 
         private void Cell_OnRightClick(object sender, CellClickedEventArgs e)
         {
+            if (!hasStarted)
+            {
+                return;
+            }
+
             this.GameVm.FlagCell(e.Position);
         }
 
         private void Cell_OnLeftClick(object sender, CellClickedEventArgs e)
         {
+            if (!hasStarted)
+            {
+                this.hasStarted = true;
+                this.GameVm.Start(e.Position);
+            }
+
             this.GameVm.OpenCell(e.Position);
         }
     }

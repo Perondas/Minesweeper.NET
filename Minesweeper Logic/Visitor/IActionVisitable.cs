@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace Minesweeper.Logic.Actions
+﻿namespace Minesweeper.Logic.Visitor
 {
     public interface IActionVisitable
     {

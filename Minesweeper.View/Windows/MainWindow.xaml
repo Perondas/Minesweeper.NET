@@ -3,10 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Minesweeper.View.Windows"
-        xmlns:userControls="clr-namespace:Minesweeper.View.UserControls"
-        xmlns:pages="clr-namespace:Minesweeper.View.Pages"
         mc:Ignorable="d"
         Title="Minesweeper" Height="800" Width="800">
-    <Frame x:Name="Frame"></Frame>
+    <Frame x:Name="Frame" NavigationUIVisibility="Hidden"></Frame>
 </Window>

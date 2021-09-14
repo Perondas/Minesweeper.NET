@@ -26,8 +26,14 @@
             <Button MaxWidth="230" FontSize="30" 
                     Background="Transparent" 
                     BorderBrush="Transparent"
-                    Click="ButtonBase_OnClick">
-                Start New Game
+                    Click="ButtonCustom_OnClick">
+                Start new custom game
+            </Button>
+            <Button MaxWidth="240" FontSize="30" 
+                    Background="Transparent" 
+                    BorderBrush="Transparent"
+                    Click="Button10X10_OnClick">
+                Start 10X10 game
             </Button>
         </StackPanel>
     </Grid>

@@ -1,29 +1,33 @@
-﻿using System;
+﻿using Minesweeper.Common.Data;
+using Minesweeper.Logic.Actions;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using Minesweeper.Common.Data;
-using Minesweeper.Logic.Game;
-using Minesweeper.Logic.Visitor;
 
 namespace Minesweeper.Logic.Rules
 {
-    public class GameStartRule : ICellVisitor<int>
+    public class GameStartRule
     {
-        public Game.Game StartGame(Game.Game game, Position firstPosition, int mineCount)
+        public IEnumerable<IAction> StartGame(Game.Game game, Position firstPosition, int mineCount)
         {
+            var mines = new List<IAction>();
             var rand = new Random();
+
             for (uint x = 0; x < mineCount; x++)
             {
                 var pos = new Position(rand.Next(0, game.Board.XSize), rand.Next(0, game.Board.YSize));
-                if (game.Board.Cells.ContainsKey(pos))
+                if (mines.Any(r => r.ChangedPositions().Contains(pos))
+                    || pos.Distance(firstPosition) <= 1)
                 {
                     x--;
                     continue;
                 }
 
-                game.Board.Cells.Add(pos, new CellWithMine());
+                mines.Add(new CreateMineAction(pos));
             }
 
-            var keys = game.Board.Cells.Keys.ToList();
+            var keys = mines.SelectMany(r => r.ChangedPositions());
+            var numberedCells = new List<IAction>();
             foreach (var minePos in keys)
             {
                 for (var x1 = -1; x1 < 2; x1++)
@@ -31,62 +35,20 @@ namespace Minesweeper.Logic.Rules
                     for (var y1 = -1; y1 < 2; y1++)
                     {
                         var newPos = new Position(minePos.X + x1, minePos.Y + y1);
-                        if (newPos.IsPositive())
+                        if (newPos != minePos
+                            && newPos.IsPositive()
+                            && newPos.X < game.Board.XSize
+                            && newPos.Y < game.Board.YSize)
                         {
-                            if (game.Board.Cells.TryGetValue(newPos, out var cell))
-                            {
-                                if (cell.Accept(this) == 0)
-                                {
-                                    game.Board.Cells.Remove(newPos);
-                                    game.Board.Cells.Add(newPos, new NumberedCell(1));
-                                }
-                                else if (cell.Accept(this) < 9)
-                                {
-                                    var numCell = (NumberedCell) cell;
-                                    numCell.Num++;
-                                }
-                            }
-                            else if (newPos.X < game.Board.XSize && newPos.Y < game.Board.YSize)
-                            {
-                                game.Board.Cells.Add(newPos, new NumberedCell(1));
-                            }
+                            numberedCells.Add(new IncreaseNumberedCellAction(newPos));
                         }
                     }
                 }
             }
 
-            for (int x = 0; x < game.Board.XSize; x++)
-            {
-                for (int y = 0; y < game.Board.YSize; y++)
-                {
-                    var newPos = new Position(x, y);
-                    if (game.Board.Cells.ContainsKey(newPos))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        game.Board.Cells.Add(newPos, new EmptyCell());
-                    }
-                }
-            }
+            mines.AddRange(numberedCells);
 
-            return game;
-        }
-
-        public int Visit(EmptyCell cell)
-        {
-            return 0;
-        }
-
-        public int Visit(CellWithMine cell)
-        {
-            return 9;
-        }
-
-        public int Visit(NumberedCell cell)
-        {
-            return cell.Num;
+            return mines;
         }
     }
 }

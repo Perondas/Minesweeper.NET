@@ -44,11 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\CreateMineAction.cs" />
+    <Compile Include="Actions\IncreaseNumberedCellAction.cs" />
     <Compile Include="Actions\DeFlagCellAction.cs" />
     <Compile Include="Actions\EmptyAction.cs" />
     <Compile Include="Actions\FlagCellAction.cs" />
-    <Compile Include="Actions\IActionVisitable.cs" />
-    <Compile Include="Actions\IActionVisitor.cs" />
+    <Compile Include="Visitor\IActionVisitable.cs" />
+    <Compile Include="Visitor\IActionVisitor.cs" />
     <Compile Include="Actions\OpenCellAction.cs" />
     <Compile Include="Cells\CellWithMine.cs" />
     <Compile Include="Cells\EmptyCell.cs" />

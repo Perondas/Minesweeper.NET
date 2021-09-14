@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Minesweeper.View.Pages;
 using System.Windows;
-using Minesweeper.Common.Data;
-using Minesweeper.View.EventArgs;
-using Minesweeper.View.Pages;
-using Minesweeper.ViewModel.ViewModels;
 
 namespace Minesweeper.View.Windows
 {
@@ -15,7 +11,7 @@ namespace Minesweeper.View.Windows
         public MainWindow()
         {
             var page = new MainMenu();
-            
+
             InitializeComponent();
             this.Frame.Navigate(page);
         }

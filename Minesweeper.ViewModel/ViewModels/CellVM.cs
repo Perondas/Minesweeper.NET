@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Minesweeper.Common.Data;
+﻿using Minesweeper.Common.Data;
 using Minesweeper.Logic.Game;
 using Minesweeper.Logic.Visitor;
 using Minesweeper.ViewModel.Annotations;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Minesweeper.ViewModel.ViewModels
 {
